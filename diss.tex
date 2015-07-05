@@ -1,0 +1,148 @@
+\documentclass{tucsdissertation}
+
+%%% Own definitios are here
+%\input Thdefs
+
+%%% Formatting for URLs
+\usepackage{url}
+\setcounter{tocdepth}{2}
+
+\begin{document}
+\bibliographystyle{plain}
+
+\title{The title of the dissertation}
+
+\author{Author's Name}
+
+\tucsnumber{????}
+\isbn{????-???????}
+
+\maketitle
+
+% The inner title page with information about when and where
+% the doctoral defence takes place. Format as you like.
+
+\pagestyle{empty}
+\vspace*{3cm}
+\begin{center}
+
+\textsf{\Huge The title of the dissertation} \\
+\vspace{3cm}
+\textsf{\huge Author's Name}
+
+\vspace{4cm}
+
+\emph{
+To be presented, with the permission of the Faculty of ??? of the University of ???,
+for public criticism in Auditorium ??? on August 20, 2004, at 12 noon.
+}
+
+ \vspace{1cm}
+ 
+University of ??? \\
+Department of ??? \\
+Address of Department \\
+\bigskip
+2006
+
+\end{center}
+\clearpage
+
+% The page with the names of the supervisors, reviewers and opponent.
+% Edit as you like.
+
+\noindent \textbf{\Large Supervisors} \\ \mbox{}
+
+ \parbox[t]{12 cm}{
+  Supervisor1\\
+  Department of ??? \\
+  University of ??? \\
+  Address \\
+  Country \\ \mbox{}
+}
+
+ \parbox[t]{12 cm}{
+  Supervisor2\\
+  Department of ??? \\
+  University of ??? \\
+  Address \\
+  Country \\ \mbox{}
+}
+
+\bigskip
+\noindent \textbf{\Large Reviewers} \\ \mbox{}
+
+ \parbox[t]{12 cm}{
+  Reviewer1\\
+  Department of ??? \\
+  University of ??? \\
+  Address \\
+  Country \\ \mbox{}
+}
+
+ \parbox[t]{12 cm}{
+  Reviewer2\\
+  Department of ??? \\
+  University of ??? \\
+  Address \\
+  Country \\ \mbox{}
+}
+
+\bigskip
+\noindent \textbf{\Large Opponent} \\ \mbox{}
+
+ \parbox[t]{12 cm}{
+  Opponent\\
+  Department of ??? \\
+  University of ??? \\
+  Address \\
+  Country \\ \mbox{}
+}
+
+% Add stretchable space to put ISBN and ISSN at the bottom of the page
+\vfill
+\noindent \parbox[t]{12 cm}{
+  ISBN \theisbn \\ 
+  ISSN \theissn
+}
+\clearpage
+
+% The abstract, acknowledgements, table of contents, etc. have
+% roman page numbers
+\pagestyle{plain}
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+% Include the file containing the abstract of the thesis
+\include{abstract}
+\clearpage
+
+
+% Include the file containing the acknowledgement
+\include{acknowledgements}
+\clearpage
+
+% Include the file containing the list of original publications
+\include{listofpublications}
+\clearpage
+
+%Table of contents
+\tableofcontents
+\cleardoublepage
+
+% Start normal page numbering
+\pagenumbering{arabic}
+
+% Include the chapters as separate files 
+
+\include{chapter1}
+\include{chapter2}
+
+% Include the BibTeX bibliograph containing your references 
+%\bibliography{mybib}
+
+\end{document}
+
+
+
+
