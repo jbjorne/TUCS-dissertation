@@ -3,12 +3,22 @@
 %%% Own definitios are here
 %\input Thdefs
 
+\input{macros.tex}
+
 %%% Formatting for URLs
 \usepackage{url}
 \setcounter{tocdepth}{2}
 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{natbib}
+\usepackage{fancyhdr}
+\usepackage{calc}
+\usepackage{pdfpages}
+
 \begin{document}
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
 
 \title{The title of the dissertation}
 
@@ -25,6 +35,7 @@
 \pagestyle{empty}
 \vspace*{3cm}
 \begin{center}
+%\begin{textsf}
 
 \textsf{\Huge The title of the dissertation} \\
 \vspace{3cm}
@@ -37,7 +48,7 @@ To be presented, with the permission of the Faculty of ??? of the University of 
 for public criticism in Auditorium ??? on August 20, 2004, at 12 noon.
 }
 
- \vspace{1cm}
+\vspace{1cm}
  
 University of ??? \\
 Department of ??? \\
@@ -114,32 +125,95 @@ Address of Department \\
 \pagenumbering{roman}
 
 % Include the file containing the abstract of the thesis
-\include{abstract}
+\input{abstract.tex}
 \clearpage
 
 
 % Include the file containing the acknowledgement
-\include{acknowledgements}
+\input{acknowledgements}
+\cleardoublepage
+
+
+\begin{flushright}\vspace*{10cm}\emph{In memory of Miroslav Bene\v{s}}\end{flushright}
 \clearpage
 
 % Include the file containing the list of original publications
-\include{listofpublications}
+\sloppy
+\input{listofpublications.tex}
+\fussy
 \clearpage
 
 %Table of contents
 \tableofcontents
 \cleardoublepage
+\pagestyle{fancy}
+%\fancyheadoffset[LE,RO]{\marginparsep+\marginparwidth}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\fancypagestyle{plain}{%
+   \fancyhead{} % get rid of headers
+   \renewcommand{\headrulewidth}{0pt} % and the line
+}
+%\pagestyle{plain}
 
 % Start normal page numbering
 \pagenumbering{arabic}
 
 % Include the chapters as separate files 
+\phdpart{Research summary}
 
-\include{chapter1}
-\include{chapter2}
+\input{chapter1.tex}
+\input{chapter2.tex}
+\input{chapter3.tex}
 
 % Include the BibTeX bibliograph containing your references 
 %\bibliography{mybib}
+
+\def\bibname{References}
+%\renewcommand{\bibsection}{\chapter*{\bibname}}
+\def\bibpreamble{}
+\bibliographystyle{apalike}
+\clearpage
+\addcontentsline{toc}{chapter}{References}
+\bibliography{phd,ProjectBibliography/projectbib}
+
+\phdpart{Publication reprints}
+%\pagestyle{empty}
+\reprinthead{Paper I title}{Author, A. (2004).}{\newblock {\em Journal},
+1:100--101.}{I}
+
+\pdfincludepdfw{fulltext/r_paper_I}{Paper I}
+
+\reprinthead{Paper II title}{Author, A. (2004).}{\newblock {\em Journal},
+1:100--101.}{II}
+
+\pdfincludepdfh{fulltext/r_paper_II}{Paper II}
+
+\reprinthead{Paper III title}{Author, A. (2004).}{\newblock {\em Journal},
+1:100--101.}{III}
+
+
+\pdfincludepdfw{fulltext/r_paper_III}{Paper III}
+
+\reprinthead{Paper IV title}{Author, A. (2004).}{\newblock {\em Journal},
+1:100--101.}{IV}
+
+
+\pdfincludepdfw{fulltext/r_paper_IV}{Paper IV}
+
+\reprinthead{Paper V title}{Author, A. (2004).}{\newblock {\em Journal},
+1:100--101.}{V}
+
+\pdfincludepdfh{fulltext/r_paper_V}{Paper V}
+
+\reprinthead{Paper VI title}{Author, A. (2004).}{\newblock {\em Journal},
+1:100--101.}{VI}
+
+\pdfincludepdfw{fulltext/r_paper_VI}{Paper VI}
 
 \end{document}
 

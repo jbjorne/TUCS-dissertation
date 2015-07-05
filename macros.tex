@@ -1,0 +1,45 @@
+\newcommand{\phdpart}[1]{\part{#1}\addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}}
+\newcommand{\phdchapter}[1]{\chapter{#1}}
+\newcommand{\phdsection}[1]{\section{#1}}
+\newcommand{\phdsubsection}[1]{\subsection{#1}}
+
+\newcommand{\phdabbdef}[1]{(#1)}
+
+\newcommand{\phdemph}[1]{\emph{#1}}
+\newcommand{\phdde}[1]{\phdemph{#1}}
+
+\newcommand{\phdcitet}[1]{\citet{#1}}
+\newcommand{\phdcitep}[1]{\citep{#1}}
+\newcommand{\phdtexample}[1]{``#1''}
+
+\newcommand{\phdciteppage}[2]{\citep[page #2]{#1}}
+\newcommand{\phdcitetpage}[2]{\citet[page #2]{#1}}
+
+\newcommand{\phdquote}[2]{\begin{quote}\emph{#1} #2\end{quote}}
+
+\newcommand{\phdterm}[1]{\emph{#1}}
+
+\newcommand{\phdknn}{$k$NN}
+
+\newcommand{\phdurlref}[1]{\footnote{\texttt{#1}}}
+
+\newcommand{\phdref}[1]{\ref{#1}}
+\newcommand{\phdlabel}[1]{\label{#1}}
+
+
+\newcommand{\phdpapernumber}[1]{\ifthenelse{\equal{#1}{ginter04disambiguation}}{I}{\ifthenelse{\equal{#1}{ginter04ontology}}{II}{\ifthenelse{\equal{#1}{ginter06docclas}}{III}{\ifthenelse{\equal{#1}{pyysalo06corpus}}{IV}{\ifthenelse{\equal{#1}{ginter06fslg}}{V}{\ifthenelse{\equal{#1}{ginter06psearch}}{VI}{\ifthenelse{\equal{#1}{ginter05docclas}}{}{XXX}}}}}}}}
+
+\newcommand{\phdpapercite}[1]{Paper~\phdpapernumber{#1}}
+
+\newcommand{\mybibitem}[2][x]{\item[\textbf{\phdpapernumber{#2}}]}
+
+
+\newcommand{\reprinthead}[4]{\addcontentsline{toc}{chapter}{Paper #4}\fancyhead[C]{}\fancyhead[LO,RE]{}\cleardoublepage\chapter*{Paper #4}\noindent{\bf\Large #1}\vspace{0.5cm}\par\noindent#2 #3}
+
+\newcommand{\dirquote}[1]{\emph{``#1''}}
+\newcommand{\phdcaption}[1]{\caption{{\textit{\small #1}}}}
+
+\newcommand{\figsource}[1]{[Figure from #1]}
+
+\newcommand{\pdfincludepdfw}[3][]{\cleardoublepage\fancyhead[RE,LO]{REPRINT}\fancyhead[LE,RO]{\bfseries \thepage}\fancyhead[C]{#3}\includepdf[pages=-,pagecommand={}#1,noautoscale=true,width=\textwidth]{#2}}
+\newcommand{\pdfincludepdfh}[3][]{\cleardoublepage\fancyhead[RE,LO]{REPRINT}\fancyhead[LE,RO]{\bfseries \thepage}\fancyhead[C]{#3}\includepdf[pages=-,pagecommand={}#1,noautoscale=true,height=\textheight]{#2}}
