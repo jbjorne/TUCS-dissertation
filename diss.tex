@@ -180,19 +180,33 @@ Address of Department \\
 % Start normal page numbering
 \pagenumbering{arabic}
 
-% Include the chapters as separate files 
+% Include the chapters as separate files %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{chapter1}
 \include{chapter2}
 \include{chapter3}
 %\include{chapter4}
 %\include{chapter5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Include the BibTeX bibliography containing your references
+
+% Include the BibTeX bibliography containing your references %%%%%%%%%%%%%%%%%%
 \bibliographystyle{apalike}
 \bibliography{bibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\phdpart{Publication reprints}
+
+% Include the publication reprints %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nobibliography*
+
+% There are two reprint commands, reprintheadarticle and reprintheadinproceedings,
+% for a journal article and proceedings article, respectively. Both use the same
+% arguments:
+% 
+% \reprintx{BibTex key}{PDF to include}{paper number}{trimming}
+% 
+% These commands will add the relevant parts of the  BibTex entry into the title
+% page of each reprint. The trim settings can be used to remove whitespace from
+% the PDF.
 
 \reprintheadarticle{dummy1}{papers/example}{I}
 {trim=16mm 12mm 16mm 0mm}
@@ -206,7 +220,7 @@ Address of Department \\
 % {trim=45mm 56mm 38mm 40mm}
 % \reprintheadinproceedings{xx}{papers/xx}{VI}
 % {trim=23mm 20mm 23mm 21mm}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
 
