@@ -36,10 +36,88 @@
 
 \newcommand{\reprinthead}[4]{\addcontentsline{toc}{chapter}{Paper #4}\fancyhead[C]{}\fancyhead[LO,RE]{}\cleardoublepage\chapter*{Paper #4}\noindent{\bf\Large #1}\vspace{0.5cm}\par\noindent#2 #3}
 
+\newlength\marginmarkerypos
+\setlength{\marginmarkerypos}{100pt}
+\newlength\marginmarkerheight
+%\setlength{\marginmarkerheight}{0pt}
+
+% \usepackage{pgf}
+% \newcommand*{\getlength}[2]{%
+%    \pgfmathsetmacro#1{#2}%  Result in `pt`
+%    % Or:
+%    %\pgfmathsetmacro#1{0.0351459804*#2}%  Result in `cm`
+% }
+
+\newcommand{\marginmarker}[1]{
+%\setcounter{marginmarkerypos}{\value{marginmarkerypos}+\value{marginmarkercount}*\value{marginmarkerheight}}
+\settoheight{\marginmarkerheight}{
+\begin{textblock*}{200pt}(500pt,\marginmarkerypos)
+\raggedright{\normalfont{\huge{\bfseries{\color{white}#1}}}}
+\end{textblock*}
+}
+%\getlength{\marginmarkerheight}{\marginmarkerheight}
+%Value = \the\marginmarkerypos
+\setlength{\marginmarkerypos}{\marginmarkerypos+\marginmarkerheight+10mm}
+%Value = \the\marginmarkerypos
+%\addtocounter{marginmarkercount}{1}
+}
+
+\newcommand{\reprintheadinproceedings}[4]{\reprinthead
+{\usebibentry{#1}{title}}
+{\usebibentry{#1}{author} (\usebibentry{#1}{year}).}
+{\newblock {In \em \usebibentry{#1}{booktitle}}, 
+pages \usebibentry{#1}{pages}. \usebibentry{#1}{organization}}
+{#3}
+\marginmarker{#3}
+\pdfincludepdfh{#2}{Paper #3}{#4}{}
+}
+
+\newcommand{\reprintheadarticle}[4]{\reprinthead
+{\usebibentry{#1}{title}}
+{\usebibentry{#1}{author} (\usebibentry{#1}{year}).}
+{\newblock {\em \usebibentry{#1}{journal}},
+\usebibentry{#1}{volume}(\usebibentry{#1}{number}):\usebibentry{#1}{pages}}
+{#3}
+\marginmarker{#3}
+\pdfincludepdfh{#2}{Paper #3}{#4}{}
+}
+
 \newcommand{\dirquote}[1]{\emph{``#1''}}
 \newcommand{\phdcaption}[1]{\caption{{\textit{\small #1}}}}
 
 \newcommand{\figsource}[1]{[Figure from #1]}
 
-\newcommand{\pdfincludepdfw}[3][]{\cleardoublepage\fancyhead[RE,LO]{REPRINT}\fancyhead[LE,RO]{\bfseries \thepage}\fancyhead[C]{#3}\includepdf[pages=-,pagecommand={}#1,noautoscale=true,width=\textwidth]{#2}}
-\newcommand{\pdfincludepdfh}[3][]{\cleardoublepage\fancyhead[RE,LO]{REPRINT}\fancyhead[LE,RO]{\bfseries \thepage}\fancyhead[C]{#3}\includepdf[pages=-,pagecommand={}#1,noautoscale=true,height=\textheight]{#2}}
+% \newcommand{\pdfincludepdfw}[3][]
+% {
+% 	\cleardoublepage
+% 	\fancyhead[RE,LO]{REPRINT}
+% 	\fancyhead[LE,RO]
+% 	{
+% 		\bfseries
+% 		\thepage
+% 	}
+% 	%\fancyhead[C]{#3}
+% 	\includepdf[frame=true,pages=-,pagecommand={}#1,noautoscale=true,width=\textwidth]{#2}
+% }
+
+\newcommand{\pdfincludepdfh}[4][,]
+{
+	\cleardoublepage
+	\fancyhead[RE,LO]{REPRINT}
+	\fancyhead[LE,RO]
+	{
+		\bfseries
+		\thepage
+	}
+	\fancyhead[C]{#4}
+	%\setlength{\footskip}{120pt}
+	\includepdf
+	[
+		pages=-,
+		pagecommand={}#1,
+		noautoscale=true,
+		height=\textheight,
+		clip,#4
+	]{#2}
+	\setlength{\footskip}{0pt}
+}

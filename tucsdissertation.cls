@@ -4,7 +4,7 @@
 \ProvidesClass{tucsdissertation}[2006/10/17 TUCS Dissertation.]
 
 \RequirePackage{ifthen,epsfig,graphics}
-\RequirePackage[usenames,dvipsnames]{color}
+\RequirePackage[usenames]{color}
 
 % For the cover pages.
 \newboolean{cover}
@@ -43,10 +43,10 @@
 %   tucsnumber: The number of the TUCS Dissertations
 %   isbn:	The ISBN number of the Publication.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\@tucsnumber}{90}
+\newcommand{\@tucsnumber}{?}
 \newcommand{\tucsnumber}[1]{\renewcommand{\@tucsnumber}{#1}}
 
-\newcommand{\@isbn}{978-952-12-1923-8}
+\newcommand{\@isbn}{?}
 \newcommand{\isbn}[1]{\renewcommand{\@isbn}{#1}}
 \newcommand{\theisbn}{\@isbn}
 
@@ -154,7 +154,7 @@
    \clearpage
   \begin{figure}[t]
     \begin{picture}(100,100)(0,0)
-      \put(-77,-345){\includegraphics{TUCS_etukansi}} 
+      \put(-77,-345){\includegraphics{TUCS_etukansi.eps}} 
       \put(-32,120){\parbox[t]{15cm}{\color{white}\author@font\@author}}
       %\put(-32,10){\parbox[t]{15cm}{\color{white}\title@font\@title}}
       \put(-32,10){\parbox[t]{15cm}{\color{white}\Huge\sf\@title}}
@@ -191,7 +191,7 @@
 
     \begin{picture}(0,0)(0,0)
       %\put(-110,-650){\includegraphics{TUCS_takakansi.eps}} %%% (-80,-600)
-      \put(-87,-514){\includegraphics{Diss_backcoverA4}} %%% (-80,-600)
+      \put(-87,-514){\includegraphics{Diss_backcoverA4.eps}} %%% (-80,-600)
       %\put(-60,-180){\parbox[t]{15cm}{\color{white}\tinfo@font{Joukahaisenkatu 3$\,$-$\,$5, 20520 Turku, Finland \ $|$\  www.tucs.fi}}}
     \end{picture}\\ 
 %

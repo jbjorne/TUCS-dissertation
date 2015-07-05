@@ -1,19 +1,37 @@
+\begingroup
+\let\clearpage\relax
 
 \chapter*{List of original publications}
 
-\begin{list}{}{}
+\nobibliography*
 
-%\input{frontreferences2.bbl}
+\begin{enumerate}[I]
 
-\end{list}
+% Add here the papers included in the thesis %%%%%%%%%%%%%%%%%%%%%%%%
+\item{\bibentry{dummy1}}
+\item{\bibentry{dummy2}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter*{List of other co-authored and co-edited original publications}
+\end{enumerate}
 
-\section*{Co-authored publications}
+\newpage
 
-\renewcommand{\mybibitem}[2][x]{\item}
+\endgroup
+
+\begingroup
+\let\clearpage\relax
+
+\chapter*{List of co-authored publications not included in the thesis}
 
 \begin{itemize}
-%\input{secondfrontreferences2.bbl}
+
+% Add here your other papers not included in the thesis %%%%%%%%%%%%%
+\item{\bibentry{dummy3}}
+\item{\bibentry{dummy4}}
+\item{\bibentry{dummy5}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \end{itemize}
-\section*{Co-edited conference proceedings}
+\newpage
+
+\endgroup

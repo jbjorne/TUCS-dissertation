@@ -1,0 +1,71 @@
+\usepackage{keyval}
+\makeatletter
+
+%%% Definition of keys
+\define@key{reuse}{currentkind}{\def\@tempa{#1}}
+\define@key{reuse}{currententry}{\def\reuse@current{#1}}
+\def\define@reuse@key#1{\define@key{reuse}{#1}{%
+  \global\@namedef{reuse@\reuse@current @#1}{##1}}}
+\define@reuse@key{title}
+\define@reuse@key{isbn}
+\define@reuse@key{url}
+\define@reuse@key{year}
+\define@reuse@key{note}
+
+%%% The macro substituted to @book, @article, etc.
+\def\reuse@find#1#{%
+  \lowercase{\setkeys{reuse}{currentkind=#1}}%
+  \ifcsname reuse@type@\@tempa\endcsname
+    \expandafter\@gobble
+  \else
+    \begingroup\makeatother
+    \expandafter\reuse@extract
+  \fi}
+
+%%% the macro for extracting the fields
+\def\reuse@extract#1{\setkeys{reuse}{currententry=#1}\endgroup}
+
+%%% Ignore @preamble and @string
+\let\reuse@type@preamble\@empty
+\let\reuse@type@string\@empty
+
+%%% Error management
+\def\reuse@error#1#2{%
+  \PackageError{reuse}
+    {Undefined key `#1' or empty value for `#2'}
+    {The key you used is wrong or the value to `#2' has not been set}}
+
+%%% The four user level macros
+\newcommand\newbibfield[1]{\define@reuse@key{#1}}
+
+\def\usebibentry#1#2{\@ifundefined{reuse@#1@#2}
+  {\reuse@error{#1}{#2}}
+  {\@nameuse{reuse@#1@#2}}}
+
+\newcommand{\usebibentryurl}[2][|]{\@ifundefined{reuse@#2@url}
+  {\reuse@error{#2}{url}}
+  {\@usebibentryurl{#1}{#2}}}
+
+\@ifpackageloaded{hyperref}{\@tempswatrue}{\@tempswafalse}
+\if@tempswa
+  \def\@usebibentryurl#1#2{%
+    \scantokens{\url{\csname reuse@#2@url\endcsname}\endinput}}
+\else
+  \def\@usebibentryurl#1#2{%
+    \toks@=\expandafter\expandafter\expandafter
+      {\csname reuse@#2@url\endcsname}%
+    \scantokens\expandafter{%
+      \expandafter\url\expandafter#1\the\toks@#1\endinput}}
+\fi
+
+\newcommand{\bibinput}[1]{%
+  \begingroup
+  \catcode`\%=12
+  \let\KV@err=\@gobble
+  \let\KV@errx=\@gobble
+  \let\XKV@err=\@gobble
+  \begingroup\lccode`\~=`\@
+    \lowercase{\endgroup\let~}\reuse@find
+  \catcode`\@=\active \input{#1.bib}\endgroup}
+
+\makeatother
